@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuru Wire — Development News from Africa</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2064%2064'%3E%3Crect%20width%3D'64'%20height%3D'64'%20rx%3D'14'%20fill%3D'%238b0000'%2F%3E%3Cpath%20d%3D'M8%2034h12l6-16%2010%2030%207-22%204%208h9'%20fill%3D'none'%20stroke%3D'%23fff'%20stroke-width%3D'5'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3C%2Fsvg%3E" />
+  <meta name="theme-color" content="#8b0000" />
+  <meta name="description" content="Nuru Wire: daily business, technology and development news from Uganda, Kenya, Somalia, Ethiopia, Nigeria and Ghana, with live USD exchange rates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nuru Wire: Development News from Africa" />
+  <meta property="og:description" content="140 fresh stories from 14 African news sources, updated Thursday, 19 November 2026." />
+  <meta property="og:image" content="https://cdn.punchng.com/wp-content/uploads/2025/10/06014147/Oyo-state-map.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff; 
+      --bg-alt: #f7f5f2; 
+      --border: #e3ded7; 
+      --border-strong: #cfc8be;
+      --text: #1a1a1a; 
+      --text-soft: #4a4a4a; 
+      --muted: #7a746c;
+      /* Dark Red Theme */
+      --accent: #8b0000; 
+      --accent-dark: #5c0000; 
+      --radius: 4px; 
+      --green: #1e7d4f;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    
+    /* Header & Nav */
+    .topbar { background: var(--bg-alt); border-bottom: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); }
+    .topbar-inner { max-width: 1280px; margin: 0 auto; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .masthead { border-bottom: 3px double var(--border-strong); }
+    .masthead-inner { max-width: 1280px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 1.3rem; }
+    .brand-text .name { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--accent); }
+    
+    .mainnav { border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); z-index: 40; }
+    .mainnav-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; gap: 4px; overflow-x: auto; }
+    .mainnav a { font-size: 0.85rem; font-weight: 600; padding: 14px 12px; border-bottom: 3px solid transparent; white-space: nowrap; color: var(--text-soft); transition: color 0.2s; }
+    .mainnav a:hover, .mainnav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+    
+    /* Ticker Fix */
+    .ticker { background: var(--accent); color: #fff; display: flex; align-items: center; height: 40px; overflow: hidden; width: 100%; }
+    .ticker-label { background: var(--accent-dark); padding: 0 20px; height: 100%; display: flex; align-items: center; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; flex-shrink: 0; z-index: 2; position: relative; }
+    .ticker-track-container { flex: 1; overflow: hidden; display: flex; align-items: center; }
+    .ticker-track { display: flex; gap: 48px; font-size: 0.84rem; white-space: nowrap; animation: scroll 50s linear infinite; padding-left: 20px; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    
+    /* Layout */
+    .layout { max-width: 1280px; margin: 0 auto; padding: 28px 20px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+    @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
+    
+    /* Lead */
+    .lead { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; border-bottom: 2px solid var(--text); padding-bottom: 28px; margin-bottom: 28px; }
+    @media (max-width: 720px) { .lead { grid-template-columns: 1fr; } }
+    .lead-img { aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden; }
+    .lead-body { display: flex; flex-direction: column; justify-content: center; }
+    .kicker { color: var(--accent); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    .lead-title { font-family: 'Playfair Display', serif; font-size: 2.1rem; line-height: 1.12; margin-bottom: 12px; }
+    .lead-dek { color: var(--text-soft); margin-bottom: 16px; font-size: 0.95rem; }
+    .byline { font-size: 0.78rem; color: var(--muted); }
+    .byline .source { color: var(--accent); font-weight: 600; }
+    
+    /* Sections */
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--text); padding-bottom: 8px; margin-bottom: 20px; margin-top: 35px; }
+    .section-head h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; }
+    .section-head a { font-size: 0.72rem; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+    
+    .story-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 620px) { .story-list { grid-template-columns: 1fr; } }
+    .story { display: grid; grid-template-columns: 100px 1fr; gap: 14px; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+    .story-img { width: 100px; height: 75px; border-radius: var(--radius); overflow: hidden; }
+    .story-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+    .story-title { font-family: 'Playfair Display', serif; font-size: 0.98rem; line-height: 1.3; margin-bottom: 5px; }
+    .story-meta { font-size: 0.7rem; color: var(--muted); }
+    
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 800px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .card-grid { grid-template-columns: 1fr; } }
+    .card { display: flex; flex-direction: column; }
+    .card-img { aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+    .card-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.3; margin-bottom: 6px; }
+    
+    /* Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+    .widget { background: var(--bg-alt); padding: 18px; border-radius: var(--radius); border: 1px solid var(--border); }
+    .widget-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 7px; margin-bottom: 14px; color: var(--accent); }
+    
+    /* Rates */
+    .rate-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .rate-row:last-child { border-bottom: none; }
+    .rate-label { font-weight: 700; }
+    .rate-country { color: var(--muted); font-size: 0.78rem; flex: 1; padding-left: 10px; }
+    .rate-value { font-weight: 600; color: var(--green); }
+    
+    /* Most Read & Trending */
+    .widget-list { list-style: none; }
+    .widget-list li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .widget-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .widget-list a { font-size: 0.85rem; font-weight: 600; line-height: 1.35; }
+    .widget-list a:hover { color: var(--accent); }
+    .trend-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); opacity: 0.4; line-height: 1; }
+
+    /* Top Business Widget */
+    .biz-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .biz-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .biz-title { font-size: 0.85rem; font-weight: 600; line-height: 1.35; display: block; margin-bottom: 4px; }
+    .biz-title:hover { color: var(--accent); }
+    .biz-meta { font-size: 0.7rem; color: var(--muted); }
+
+    /* Footer */
+    footer { background: #111; color: #888; padding: 50px 20px 20px; margin-top: 40px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; border-bottom: 1px solid #333; padding-bottom: 30px; margin-bottom: 20px; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    .footer-brand .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; font-weight: 800; margin-bottom: 10px; }
+    .footer-brand p { font-size: 0.85rem; max-width: 300px; }
+    .footer-col h4 { color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+    .footer-col a { display: block; font-size: 0.85rem; padding: 5px 0; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.75rem; flex-wrap: wrap; gap: 10px; }
+
+    .story-snip:empty { display: none; }
+    .stocks { background: #14110f; }
+    .stocks .ticker-label { background: #000; }
+    .stocks .ticker-track { gap: 40px; animation-duration: 60s; }
+    .stk b { font-weight: 600; margin-right: 6px; }
+    .stk i { font-style: normal; font-weight: 700; margin-left: 4px; }
+    .stk .up { color: #4ade80; }
+    .stk .down { color: #ff7b7b; }
+    [hidden] { display: none !important; }
+    a:hover { color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .noimg { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
+    .lead-title { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+    .lead-dek { font-size: 1.02rem; }
+    .stats { background: var(--accent-dark); color: #f3dcdc; }
+    .stats-inner { max-width: 1280px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 28px; flex-wrap: wrap; font-size: 0.8rem; }
+    .stats b { color: #fff; font-size: 1.05rem; margin-right: 4px; }
+    .toolbar { max-width: 1280px; margin: 0 auto; padding: 18px 20px 0; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .toolbar input { flex: 1 1 240px; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: 999px; font: inherit; font-size: 0.9rem; background: #fff; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { border: 1px solid var(--border-strong); background: #fff; border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; color: var(--text-soft); }
+    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .count { font-size: 0.75rem; color: var(--muted); }
+    .story-snip { font-size: 0.8rem; color: var(--text-soft); line-height: 1.45; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .story-title a:hover, .card-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .section-head h2 { border-left: 4px solid var(--accent); padding-left: 10px; }
+    #empty { padding: 40px 0; text-align: center; color: var(--muted); }
+    .social { display: flex; gap: 10px; margin-top: 18px; }
+    .social a { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #333; border-radius: 50%; color: #bbb; padding: 0; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .social a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .social svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .widget-follow .social { margin-top: 0; flex-wrap: wrap; }
+    .widget-follow .social a { border-color: var(--border-strong); color: var(--text-soft); }
+    .rate-row.hl { background: #fff; margin: 0 -8px; padding: 8px; border-radius: var(--radius); }
+    .ticker-track:hover { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+    /* ---------- Tablet and phone ---------- */
+    html { -webkit-text-size-adjust: 100%; }
+    .story-title, .card-title, .lead-title, .biz-title { overflow-wrap: anywhere; }
+    .mainnav-inner, .chips { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .mainnav-inner::-webkit-scrollbar, .chips::-webkit-scrollbar { display: none; }
+    @media (max-width: 1000px) {
+      .layout { gap: 28px; }
+      .sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    }
+    @media (min-width: 601px) and (max-width: 800px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) {
+      .topbar-inner { padding: 6px 14px; font-size: 0.7rem; gap: 8px; }
+      .masthead-inner { padding: 14px; }
+      .brand { gap: 10px; }
+      .brand-mark { width: 38px; height: 38px; flex: none; }
+      .brand-mark svg { width: 26px; height: 26px; }
+      .brand-text .name { font-size: 1.7rem; }
+      .brand-text > div:nth-child(2) { letter-spacing: 0.04em !important; font-size: 0.6rem !important; }
+      .mainnav-inner { padding: 0 6px; }
+      .mainnav a { padding: 14px 12px; }
+      .ticker { height: 38px; }
+      .ticker-label { padding: 0 12px; font-size: 0.62rem; }
+      .ticker-track { font-size: 0.8rem; gap: 32px; }
+      .toolbar { padding: 14px 14px 0; gap: 10px; }
+      .toolbar input { font-size: 16px; padding: 12px 16px; } /* 16px stops iOS zooming in on focus */
+      .chips { flex-wrap: nowrap; overflow-x: auto; width: calc(100% + 28px); margin: 0 -14px; padding: 0 14px 4px; }
+      .chip { flex: none; min-height: 40px; }
+      .layout { padding: 20px 14px; }
+      .lead { gap: 14px; padding-bottom: 20px; margin-bottom: 20px; }
+      .lead-title { font-size: 1.55rem; }
+      .section-head { margin-top: 28px; margin-bottom: 16px; }
+      .section-head h2 { font-size: 1.15rem; }
+      .story { grid-template-columns: 96px 1fr; gap: 12px; }
+      .story-img { width: 96px; height: 72px; }
+      .sidebar { grid-template-columns: 1fr; }
+      .widget { padding: 16px; }
+      footer { padding: 36px 14px 18px; }
+      .footer-inner { gap: 28px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+      .footer-col a { padding: 8px 0; }
+      .social a { width: 44px; height: 44px; }
+    }
+    @media (max-width: 380px) {
+      .brand-text .name { font-size: 1.45rem; }
+      .story { grid-template-columns: 80px 1fr; }
+      .story-img { width: 80px; height: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span style="color: var(--accent); font-weight: 600;">● DEVELOPMENT BRIEFING</span>
+      <span>Thursday, 19 November 2026 · 14:11 GMT</span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="#" class="brand">
+        <div class="brand-mark"><svg viewBox="0 0 64 64" width="30" height="30"><path d='M8 34h12l6-16 10 30 7-22 4 8h9' fill='none' stroke='#fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg></div>
+        <div class="brand-text">
+          <div class="name">Nuru Wire</div>
+          <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:2px;">Development News · Africa</div>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <nav class="mainnav">
+    <div class="mainnav-inner">
+      <a href="#" class="active">Home</a>
+      <a href="#talk-of-town">Talk of Town</a>
+      <a href="#uganda">Uganda</a>
+      <a href="#kenya">Kenya</a>
+      <a href="#somalia">Somalia</a>
+      <a href="#ethiopia">Ethiopia</a>
+      <a href="#nigeria">Nigeria</a>
+      <a href="#ghana">Ghana</a>
+      <a href="#technology">Technology</a>
+      <a href="#business">Business</a>
+    </div>
+  </nav>
+
+  <div class="ticker stocks" aria-label="African company share prices in US dollars"><span class="ticker-label">Markets · USD</span><div class="ticker-track-container"><div class="ticker-track"><span class="stk" title="MTN Group (MTN.JO), converted from ZAc"><b>MTN Group</b> $13.71 <i class="up">▲ 0.47%</i></span><span class="stk" title="Naspers (NPN.JO), converted from ZAc"><b>Naspers</b> $40.22 <i class="down">▼ 1.60%</i></span><span class="stk" title="Standard Bank (SBK.JO), converted from ZAc"><b>Standard Bank</b> $17.31 <i class="up">▲ 1.25%</i></span><span class="stk" title="Airtel Africa (AAF.L), converted from GBp"><b>Airtel Africa</b> $3.67 <i class="up">▲ 1.84%</i></span><span class="stk" title="Gold Fields (GFI), converted from USD"><b>Gold Fields</b> $33.51 <i class="down">▼ 6.63%</i></span><span class="stk" title="Sasol (SSL), converted from USD"><b>Sasol</b> $12.09 <i class="down">▼ 6.64%</i></span><span class="stk" title="MTN Group (MTN.JO), converted from ZAc"><b>MTN Group</b> $13.71 <i class="up">▲ 0.47%</i></span><span class="stk" title="Naspers (NPN.JO), converted from ZAc"><b>Naspers</b> $40.22 <i class="down">▼ 1.60%</i></span><span class="stk" title="Standard Bank (SBK.JO), converted from ZAc"><b>Standard Bank</b> $17.31 <i class="up">▲ 1.25%</i></span><span class="stk" title="Airtel Africa (AAF.L), converted from GBp"><b>Airtel Africa</b> $3.67 <i class="up">▲ 1.84%</i></span><span class="stk" title="Gold Fields (GFI), converted from USD"><b>Gold Fields</b> $33.51 <i class="down">▼ 6.63%</i></span><span class="stk" title="Sasol (SSL), converted from USD"><b>Sasol</b> $12.09 <i class="down">▼ 6.64%</i></span></div></div></div>
+
+  <!-- Fixed Ticker -->
+  <div class="ticker">
+    <span class="ticker-label">Briefing</span>
+    <div class="ticker-track-container">
+      <div class="ticker-track"><span>Oyo trains healthcare workers to tackle childhood illnesses, prevent deaths</span><span>Why I chose South Africa posting over Europe — Fani-Kayode</span><span>Kalu, NHIA boss seek investment to curb medical tourism</span><span>Police locate family of Nigerian-Canadian killed in Lagos crash</span><span>I wrote UTME eight times before gaining admission – Kwara education commissioner</span><span>Lumumba faults African leaders seeking medical treatment abroad</span><span>Bayelsa CP seeks joint action against gender-based violence</span><span>Ghana Revenue Authority intensifies VAT compliance checks</span><span>Oyo trains healthcare workers to tackle childhood illnesses, prevent deaths</span><span>Why I chose South Africa posting over Europe — Fani-Kayode</span><span>Kalu, NHIA boss seek investment to curb medical tourism</span><span>Police locate family of Nigerian-Canadian killed in Lagos crash</span><span>I wrote UTME eight times before gaining admission – Kwara education commissioner</span><span>Lumumba faults African leaders seeking medical treatment abroad</span><span>Bayelsa CP seeks joint action against gender-based violence</span><span>Ghana Revenue Authority intensifies VAT compliance checks</span></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Search headlines, sources or topics" aria-label="Search stories" />
+    <div class="chips">
+      <button class="chip" type="button" aria-pressed="true">All</button><button class="chip" type="button" aria-pressed="false">Nigeria</button><button class="chip" type="button" aria-pressed="false">Ghana</button><button class="chip" type="button" aria-pressed="false">Somalia</button><button class="chip" type="button" aria-pressed="false">Uganda</button><button class="chip" type="button" aria-pressed="false">Pan-African</button><button class="chip" type="button" aria-pressed="false">Kenya</button><button class="chip" type="button" aria-pressed="false">East Africa</button><button class="chip" type="button" aria-pressed="false">Ethiopia</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <main>
+      
+    <article class="lead">
+      <div class="lead-img"><img src="https://cdn.punchng.com/wp-content/uploads/2025/10/06014147/Oyo-state-map.jpg" alt="Nigeria" /></div>
+      <div class="lead-body">
+        <span class="kicker">Nigeria · Top Story</span>
+        <h1 class="lead-title"><a href="https://punchng.com/oyo-trains-healthcare-workers-to-tackle-childhood-illnesses-prevent-deaths/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Oyo trains healthcare workers to tackle childhood illnesses, prevent deaths</a></h1>
+        <p class="lead-dek">Oyo State Primary Health Care Board begins a nine-day training to equip health workers to manage childhood illnesses and cut preventable child deaths. Read More: https://punchng.co...</p>
+        <div class="byline"><span class="source">Punch</span> <span class="sep">•</span> <span>just now</span></div>
+      </div>
+    </article>
+      
+      <div class="section-head" id="talk-of-town">
+        <h2>Talk of Town</h2>
+        <span class="count">Business and tech</span>
+      </div>
+      <div class="card-grid">
+        
+    <article class="card" data-country="Nigeria" data-q="kalu, nhia boss seek investment to curb medical tourism punch health">
+      <div class="card-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/04134217/Kalu_1793796137-1045x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="card-cat">Nigeria · Nigeria</div>
+      <h3 class="card-title"><a href="https://punchng.com/kalu-nhia-boss-seek-investment-to-curb-medical-tourism/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Kalu, NHIA boss seek investment to curb medical tourism</a></h3>
+      <div class="card-meta"><span class="source">Punch</span> · just now</div>
+    </article>
+    <article class="card" data-country="Ghana" data-q="ghana revenue authority intensifies vat compliance checks ghana business news business">
+      <div class="card-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Social-GRA-Tax-e1795086391498.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="card-cat">Ghana · Business</div>
+      <h3 class="card-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank">Ghana Revenue Authority intensifies VAT compliance checks</a></h3>
+      <div class="card-meta"><span class="source">Ghana Business News</span> · 3m ago</div>
+    </article>
+    <article class="card" data-country="Nigeria" data-q="police arrest seven over alleged kidnapping plot in kwara premium times business">
+      <div class="card-img"><img src="https://i0.wp.com/media.premiumtimesng.com/wp-content/files/2026/11/694760.jpg?fit=1024%2C728&amp;amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="card-cat">Nigeria · Business</div>
+      <h3 class="card-title"><a href="https://www.premiumtimesng.com/news/more-news/926374-police-arrest-seven-over-alleged-kidnapping-plot-in-kwara.html" target="_blank">Police arrest seven over alleged kidnapping plot in Kwara</a></h3>
+      <div class="card-meta"><span class="source">Premium Times</span> · 7m ago</div>
+    </article>
+      </div>
+
+      <div class="section-head">
+        <h2>Top Development Stories</h2>
+        <span class="count">Latest across the continent</span>
+      </div>
+      <div class="story-list">
+        
+    <article class="story" data-country="Nigeria" data-q="why i chose south africa posting over europe — fani-kayode punch general">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/14004256/1003613836_1794613376-1200x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · General</div>
+        <h3 class="story-title"><a href="https://punchng.com/why-i-chose-south-africa-posting-over-europe-fani-kayode/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Why I chose South Africa posting over Europe — Fani-Kayode</a></h3>
+        <p class="story-snip">Nigeria’s ambassador Femi Fani-Kayode says he appealed to Tinubu for a South Africa posting over Europe, amid tension over the treatment of Nigerians. Read More: https://punchng.co...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="kalu, nhia boss seek investment to curb medical tourism punch health">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/04134217/Kalu_1793796137-1045x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Health</div>
+        <h3 class="story-title"><a href="https://punchng.com/kalu-nhia-boss-seek-investment-to-curb-medical-tourism/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Kalu, NHIA boss seek investment to curb medical tourism</a></h3>
+        <p class="story-snip">Deputy Speaker Benjamin Kalu and NHIA DG Kelechi Ohiri urge health sector investment to curb medical tourism at an Abuja robotic surgery launch. Read More: https://punchng.com/kalu...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="police locate family of nigerian-canadian killed in lagos crash punch politics">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19005346/Abraham_1795046026.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Politics</div>
+        <h3 class="story-title"><a href="https://punchng.com/police-locate-family-of-nigerian-canadian-killed-in-lagos-crash/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Police locate family of Nigerian-Canadian killed in Lagos crash</a></h3>
+        <p class="story-snip">Airport Police Command says it has contacted the family of Abraham Safety Osakpolor, a Nigerian-Canadian hit by a vehicle on the Lagos airport access road. Read More: https://punch...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="i wrote utme eight times before gaining admission – kwara education commissioner punch general">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19113527/images_1795084527.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · General</div>
+        <h3 class="story-title"><a href="https://punchng.com/i-wrote-utme-eight-times-before-gaining-admission-kwara-education-commissioner/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">I wrote UTME eight times before gaining admission – Kwara education commissioner</a></h3>
+        <p class="story-snip">Kwara education commissioner Dr Lawal Olohungbebe says he sat UTME eight times before gaining admission, and urges students to rely only on JAMB CAPS. Read More: https://punchng.co...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="lumumba faults african leaders seeking medical treatment abroad punch health">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19112214/WhatsApp-Image-2026-11-19-at-10.54.29_1795083734-720x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Health</div>
+        <h3 class="story-title"><a href="https://punchng.com/lumumba-faults-african-leaders-seeking-medical-treatment-abroad/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Lumumba faults African leaders seeking medical treatment abroad</a></h3>
+        <p class="story-snip">Prof Patrick Lumumba urges African leaders to stop seeking medical treatment abroad and build local capacity, speaking at a Pan-African conference in Uyo. Read More: https://punchn...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="bayelsa cp seeks joint action against gender-based violence punch politics">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19110732/unnamed_1795082852-720x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Politics</div>
+        <h3 class="story-title"><a href="https://punchng.com/bayelsa-cp-seeks-joint-action-against-gender-based-violence/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Bayelsa CP seeks joint action against gender-based violence</a></h3>
+        <p class="story-snip">Bayelsa Police Commissioner Ajao Adewale urges agencies, traditional rulers and civil society to join forces against gender-based violence at a Yenagoa wor Read More: https://punch...</p>
+        <div class="story-meta"><span class="source">Punch</span> · 2m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="ghana revenue authority intensifies vat compliance checks ghana business news business">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Social-GRA-Tax-e1795086391498.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Business</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank">Ghana Revenue Authority intensifies VAT compliance checks</a></h3>
+        <p class="story-snip">The Ghana Revenue Authority (GRA) has intensified its Value Added Tax (VAT) compliance checks on businesses and urged consumers to demand invoices for purchases to improve revenue ...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 3m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="dowladda somalia oo cayrisay safiirkii imaaraadka u fadhiyey muqdisho. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/11/FB_IMG_1795083725946-1024x683-1.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/dowladda-somalia-oo-cayrisay-safiirkii-imaaraadka-u-fadhiyey-muqdisho/427717/" target="_blank">Dowladda Somalia oo cayrisay safiirkii Imaaraadka u fadhiyey Muqdisho.</a></h3>
+        <p class="story-snip">Dowladda Federaalka Soomaaliya ayaa qaaday tallaabo diblomaasiyadeed oo ka dhan ah Dowladda Isutagga Imaaraadka Carabta, kaddib…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 4m ago</div>
+      </div>
+    </article>
+      </div>
+
+      <div class="section-head" id="uganda"><h2>News from Uganda</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Uganda" data-q="govt opens shs2 billion ambulance dispatch centre in arua to boost emergency response nile post general">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-1.16.47-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · General</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/health/388854/govt-opens-shs2-billion-ambulance-dispatch-centre-in-arua-to-boost-emergency-response" target="_blank">Govt Opens Shs2 Billion Ambulance Dispatch Centre in Arua to Boost Emergency Response</a></h3>
+        <p class="story-snip">The regional facility will coordinate emergency calls, ambulance deployment and patient referrals across West Nile, addressing delays that can arise even when ambulances are availa...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 16m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="common man’s party warns members against indiscipline after bigirwa’s suspension nile post politics">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-1.18.26-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Politics</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388850/common-mans-party-warns-members-against-indiscipline-after-bigirwas-suspension" target="_blank">Common Man’s Party Warns Members Against Indiscipline After Bigirwa’s Suspension</a></h3>
+        <p class="story-snip">Party president Mubarak Munyagwa has warned members against violating the party constitution, following an internal leadership dispute that resulted in the suspension of Secretary ...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 30m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="acca convention challenges accountants to adapt as ai reshapes profession nile post technology">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-12.55.31-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Technology</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388845/acca-convention-challenges-accountants-to-adapt-as-ai-reshapes-profession" target="_blank">ACCA Convention Challenges Accountants to Adapt as AI Reshapes Profession</a></h3>
+        <p class="story-snip">Accountants have been urged to embrace artificial intelligence and automation while strengthening professional judgement, ethical standards and strategic leadership to remain relev...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 55m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="pm gives ura three days to reopen traders’ shops after meeting kacita nile post business">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-12.51.15-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Business</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388842/pm-gives-ura-three-days-to-reopen-traders-shops-after-meeting-kacita" target="_blank">PM Gives URA Three Days to Reopen Traders’ Shops After Meeting KACITA</a></h3>
+        <p class="story-snip"></p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="coffee players push shift from raw bean exports to value addition and tourism nile post agriculture">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-11.37.07-AM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Agriculture</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/business/388838/coffee-players-push-shift-from-raw-bean-exports-to-value-addition-and-tourism" target="_blank">Coffee Players Push Shift From Raw Bean Exports to Value Addition and Tourism</a></h3>
+        <p class="story-snip">Industry players and government officials want Uganda to move beyond raw coffee exports by investing in processing, industrialisation and coffee tourism to increase earnings, creat...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="wetlands are heroes of nature and should be protected from oil impacts nile post energy &amp; climate">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/Diana-Nabiruma.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Energy &amp; Climate</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/opinions/388835/wetlands-are-heroes-of-nature-and-should-be-protected-from-oil-impacts" target="_blank">Wetlands Are Heroes of Nature and Should Be Protected From Oil Impacts</a></h3>
+        <p class="story-snip"></p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="government weighs single regulator for large saccos nile post politics">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/sacco.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Politics</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388831/government-weighs-single-regulator-for-large-saccos" target="_blank">Government Weighs Single Regulator for Large SACCOs</a></h3>
+        <p class="story-snip">Government is considering establishing a single regulatory framework for large Savings and Credit Cooperative Organisations (SACCOs), following industry calls for streamlined overs...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="verstappen &amp;#039;trusts&amp;#039; f1 over middle east decision nile post general">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/43ce3ea0-e3e2-11f1-95b9-4f56547154ff.jpg.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · General</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388828/verstappen-trusts-f1-over-middle-east-decision" target="_blank">Verstappen &amp;#039;trusts&amp;#039; F1 over Middle East decision</a></h3>
+        <p class="story-snip"></p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article></div><div class="section-head" id="kenya"><h2>News from Kenya</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Kenya" data-q="155 arrested as kirinyaga intensifies war on illicit alcohol, drugs capital news general">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/news/2024/09/Changaa.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · General</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/155-arrested-as-kirinyaga-intensifies-war-on-illicit-alcohol-drugs/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">155 arrested as Kirinyaga intensifies war on illicit alcohol, drugs</a></h3>
+        <p class="story-snip">NAIROBI, Kenya Nov 19 – At least 155 people have been arrested in Kirinyaga County following a three-month security operation targeting illicit alcohol and drug trafficking. County...</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 37m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="ruto rejects politics of exclusion, pledges equal development capital news politics">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/news/2025/11/President-Ruto-during-rally-in-Western-Kenya-scaled.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · Politics</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/ruto-rejects-politics-of-exclusion-pledges-equal-development/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">Ruto Rejects Politics of Exclusion, Pledges Equal Development</a></h3>
+        <p class="story-snip">“Do you want to be told about shares? Do you want to be told you come from a small community or you are few?” the President posed....</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 52m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="india’s ‘drone didis’ are transforming farming and challenging gender norms capital news agriculture">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/2026/11/Precision-Farming-Team-in-Green-Fields-1200x630.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · Agriculture</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/indias-drone-didis-are-transforming-farming-and-challenging-gender-norms/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">India’s ‘Drone Didis’ are transforming farming and challenging gender norms</a></h3>
+        <p class="story-snip">Drones are changing that process by allowing farmers to apply agricultural inputs more quickly, uniformly and efficiently....</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="sifuna announces eldoret rally after us diaspora tour capital news general">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/news/2024/03/Sifuna.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · General</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/sifuna-announces-eldoret-rally-after-us-diaspora-tour/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">Sifuna announces Eldoret rally after US diaspora tour</a></h3>
+        <p class="story-snip">&quot;Everyone is free to travel across the country seeking votes. Even me, when I return, I want my first rally to be in Eldoret,&quot; he said....</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="why lasting peace starts with dignity and opportunity, beyond politics capital news general">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/2026/11/Administrative-Briefing-with-Document-Handover-1200x630.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · General</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/why-lasting-peace-starts-with-dignity-and-opportunity-beyond-politics/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">Why lasting peace starts with dignity and opportunity, beyond politics</a></h3>
+        <p class="story-snip">Olaka, a civil servant working in the Department for Refugee Services under the Ministry of Interior, likens a peaceful society to a functioning human body, where organs such as th...</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="hippo kills 16-year-old student bathing at lake victoria in homa bay capital news general">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/2026/11/hippo_attack_grayscale.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · General</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/hippo-kills-16-year-old-student-bathing-at-lake-victoria-in-homa-bay/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">Hippo kills 16-year-old student bathing at Lake Victoria in Homa Bay</a></h3>
+        <p class="story-snip">The incident occurred on Wednesday evening at Kaswanga Beach in Kaswanga village, Suba North Constituency, where the student had gone to swim with his friends....</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 2h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="us-led consortium wins kenya’s mrima hill mineral tender capital news general">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/2026/11/HUKy4CWWQAApvvc-1200x630.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · General</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/us-led-consortium-wins-kenyas-mrima-hill-mineral-tender/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">US-led consortium wins Kenya’s Mrima Hill mineral tender</a></h3>
+        <p class="story-snip">Frontier Minerals Consortium, Fangda Special Steel and Sinohydro selected for strategic mineral projects in Kwale, Samburu and Tharaka Nithi....</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 2h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Kenya" data-q="killer building collapses expose kenya’s regulatory rot capital news politics">
+      <div class="story-img"><img src="https://capitalfm.africa/wp-content/uploads/2026/11/Collapsed-High-Rise-Amid-Rubble-1200x630.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Kenya · Politics</div>
+        <h3 class="story-title"><a href="https://capitalfm.africa/killer-building-collapses-expose-kenyas-regulatory-rot/?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=feed-news" target="_blank">Killer building collapses expose Kenya’s regulatory rot</a></h3>
+        <p class="story-snip">The crisis has placed the National Construction Authority (NCA), county governments, Engineers Board of Kenya (EBK) and National Environment Management Authority (NEMA) under scrut...</p>
+        <div class="story-meta"><span class="source">Capital News</span> · 2h ago</div>
+      </div>
+    </article></div><div class="section-head" id="somalia"><h2>News from Somalia</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Somalia" data-q="dowladda somalia oo cayrisay safiirkii imaaraadka u fadhiyey muqdisho. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/11/FB_IMG_1795083725946-1024x683-1.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/dowladda-somalia-oo-cayrisay-safiirkii-imaaraadka-u-fadhiyey-muqdisho/427717/" target="_blank">Dowladda Somalia oo cayrisay safiirkii Imaaraadka u fadhiyey Muqdisho.</a></h3>
+        <p class="story-snip">Dowladda Federaalka Soomaaliya ayaa qaaday tallaabo diblomaasiyadeed oo ka dhan ah Dowladda Isutagga Imaaraadka Carabta, kaddib…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 4m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="madaxweynaha jubbaland oo sheegay in somalia ku socoto burbur aanna muqdisho laysku hallayn karin. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/01/Axmed-Madoobe-1200x800.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/madaxweynaha-jubbaland-oo-sheegay-in-somalia-ku-socoto-burbur-aanna-muqdisho-laysku-hallayn-karin/427714/" target="_blank">Madaxweynaha Jubbaland oo sheegay in Somalia ku socoto burbur aanna Muqdisho laysku hallayn karin.</a></h3>
+        <p class="story-snip">Madaxweynaha Jubbaland, Axmed Maxamed Islaam (Axmed Madoobe), ayaa dhaliil kulul u jeediyey Madaxweynaha Dowladda Federaalka Soomaaliya,…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 2h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="axmed madoobe oo daahfuray mashaariic imaaraadku ka hirgeliyey kismaayo. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/11/916765461_1715742563240960_6853235837789578955_n-1200x800.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/axmed-madoobe-oo-daahfuray-mashaariic-imaaraadku-ka-hirgeliyey-kismaayo/427707/" target="_blank">Axmed Madoobe oo daahfuray mashaariic Imaaraadku ka hirgeliyey Kismaayo.</a></h3>
+        <p class="story-snip">Madaxweynaha Dowladda Jubaland, Mudane Axmed Maxamed Islaam, ayaa xalay munaasabad kooban oo ka dhacday Dekedda Magaalada…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 5h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="taliye ku-xigeenkii booliska soomaaliya oo xilka iskacasiley. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/11/916811128_2513471402478337_7317730043949675408_n.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/taliye-ku-xigeenkii-booliska-soomaaliya-oo-xilka-iskacasiley/427703/" target="_blank">Taliye ku-xigeenkii Booliska Soomaaliya oo xilka iskacasiley.</a></h3>
+        <p class="story-snip">Sareeye Guuto Cabdalla Cabdalla Maxamed, oo ahaa Taliye Ku-xigeenka Ciidanka Booliiska Dowladda Federaalka Soomaaliya, ayaa ku…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 6h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="mareykanka: hooyo soomaali ah ayaa toogasho ku dishay laba carruur ah oo ay dhashay. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2026/11/845c5e-20261118-savage-family-shooting-b01-2000.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/mareykanka-hooyo-ayaa-toogasho-ku-dishay-laba-carruur-ah-oo-ay-dhashay/427699/" target="_blank">Mareykanka: Hooyo Soomaali ah ayaa toogasho ku dishay laba carruur ah oo ay dhashay.</a></h3>
+        <p class="story-snip">Dhacdo argagax leh ayaa ka dhacday magaalada Savage ee gobolka Minnesota, dalka Mareykanka, kaddib markii laba…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 6h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="laftagareen oo si cad u difaacay imaaraadka carabta, kana horyimid eedeymaha dowladda federaalka. horseed media general">
+      <div class="story-img"><img src="https://horseedmedia.net/wp-content/uploads/2022/04/Laftagareen.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · General</div>
+        <h3 class="story-title"><a href="https://horseedmedia.net/laftagareen-oo-si-cad-u-difaacay-imaaraadka-carabta-kana-horyimid-eedeymaha-dowladda-federaalka/427696/" target="_blank">Laftagareen oo si cad u difaacay Imaaraadka Carabta, kana horyimid eedeymaha Dowladda Federaalka.</a></h3>
+        <p class="story-snip">Madaxweynihii hore ee Dowladda Koonfur Galbeed, Cabdicasiis Xasan Maxamed Laftagareen, ayaa si cad u difaacay Dowladda…...</p>
+        <div class="story-meta"><span class="source">Horseed Media</span> · 6h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="labour mps quit somaliland group over israel and far-right ties somali guardian politics">
+      <div class="story-img"><img src="https://www.somaliguardian.com/wp-content/uploads/2023/11/5.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · Politics</div>
+        <h3 class="story-title"><a href="https://www.somaliguardian.com/news/somalia-news/labour-mps-quit-somaliland-group-israel-restore-britain/" target="_blank">Labour MPs quit Somaliland group over Israel and far-right ties</a></h3>
+        <p class="story-snip">MOGADISHU (Somaliguardian) – Two Labour MPs have withdrawn from the All-Party Parliamentary Group on Somaliland, citing a decisive shift in the forum’s direction after Israel’s rec...</p>
+        <div class="story-meta"><span class="source">Somali Guardian</span> · 18h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Somalia" data-q="uae’s gargash rejects somalia president’s interference claims somali guardian politics">
+      <div class="story-img"><img src="https://www.somaliguardian.com/wp-content/uploads/2022/06/3-7.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Somalia · Politics</div>
+        <h3 class="story-title"><a href="https://www.somaliguardian.com/news/somalia-news/uae-gargash-rejects-somalia-president-interference-claims/" target="_blank">UAE’s Gargash rejects Somalia president’s interference claims</a></h3>
+        <p class="story-snip">MOGADISHU (Somaliguardian) – A senior Emirati official on Wednesday rejected accusations by Somalia’s president that the United Arab Emirates had interfered in the country’s intern...</p>
+        <div class="story-meta"><span class="source">Somali Guardian</span> · 19h ago</div>
+      </div>
+    </article></div><div class="section-head" id="ethiopia"><h2>News from Ethiopia</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Ethiopia" data-q="addis ababa among rare african pioneers in long-term debt financing model: world bank the reporter ethiopia business">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/11/news-f.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · Business</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53788/" target="_blank">Addis Ababa among Rare African Pioneers in Long-term Debt Financing Model: World Bank</a></h3>
+        <p class="story-snip">Addis Ababa is among few cities in Sub-Saharan Africa outside South Africa to finance substantial foundational physical infrastructure through long-term contractual borrowing, unde...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 16d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="ethiopian anti-doping authority flags 89 percent of athlete evidence as fabricated the reporter ethiopia general">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/11/Ethiopian-Anti-Doping-Authority-Flags-89-Percent-of-Athlete-Evidence-as-Fabricated.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · General</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53782/" target="_blank">Ethiopian Anti-Doping Authority Flags 89 Percent of Athlete Evidence as Fabricated</a></h3>
+        <p class="story-snip">The Ethiopian Anti-Doping Authority has revealed that 89 percent of the evidence submitted by athletes in doping-related cases is unreliable or fabricated, according to Director Ge...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 17d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="un climate fund backs usd30m for mandera triangle project the reporter ethiopia energy &amp; climate">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/11/UN-Climate-Fund-Backs-USD30M-for-Mandera-Triangle-Project.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · Energy &amp; Climate</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53779/" target="_blank">UN Climate Fund Backs USD30M for Mandera Triangle Project</a></h3>
+        <p class="story-snip">The Adaptation Fund has approved a USD30 million grant for a five-year regional climate resilience project spanning Ethiopia, Kenya, and Somalia, targeting pastoralist and agro-pas...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 17d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="conflict uproots 1.7 million ethiopians, disasters add 173,000: unhcr the reporter ethiopia general">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/11/Conflict-Uproots-1.7-Million-Ethiopians.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · General</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53776/" target="_blank">Conflict Uproots 1.7 Million Ethiopians, Disasters Add 173,000: UNHCR</a></h3>
+        <p class="story-snip">Conflict has displaced approximately 1.7 million people across Ethiopia, making up the vast majority of the country’s 1.9 million internally displaced population, according to the ...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 17d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="moscow summit demands compensation for colonial-era damages on african countries the reporter ethiopia business">
+      <div class="story-img"><img src="http://www.thereporterethiopia.com/wp-content/uploads/2026/10/Moscow-Summit.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · Business</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53769/" target="_blank">Moscow Summit demands Compensation for Colonial-Era Damages on African Countries</a></h3>
+        <p class="story-snip">Condemns Western Sanctions, Asset Freezing and Economic Coercion African heads of state and governments, including Ethiopian PM Abiy Ahmed, and Russian leadership have issued a pre...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 19d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="opposition parties, un agencies sound alarm over security incidents, civilian safety in ethiopia the reporter ethiopia politics">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/10/OPPOSITION-PARTIES-UN-AGENCIES-SOUND-ALARM-OVER.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · Politics</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53766/" target="_blank">Opposition Parties, UN Agencies Sound Alarm Over Security Incidents, Civilian Safety in Ethiopia</a></h3>
+        <p class="story-snip">UN agencies report tens of thousands fled to Kenya Opposition political parties and United Nations agencies have voiced mounting concern over civilian casualties, security incident...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 19d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="ethiopia overtakes tanzania to become top ldc services exporter: wto-oecd report the reporter ethiopia general">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/10/ETHIOPIA-OVERTAKES.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · General</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53763/" target="_blank">Ethiopia Overtakes Tanzania to Become Top LDC Services Exporter: WTO-OECD Report</a></h3>
+        <p class="story-snip">Ethiopia has emerged as the largest commercial services exporter among the world’s least-developed countries (LDCs), accounting for 17 percent of the group’s total services exports...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 19d ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ethiopia" data-q="imf to review implementation schedule for ethiopia’s new economic forecasting model the reporter ethiopia business">
+      <div class="story-img"><img src="https://www.thereporterethiopia.com/wp-content/uploads/2026/10/IMF-TO-REVIEW.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ethiopia · Business</div>
+        <h3 class="story-title"><a href="https://www.thereporterethiopia.com/53759/" target="_blank">IMF to Review Implementation Schedule for Ethiopia’s New Economic Forecasting Model</a></h3>
+        <p class="story-snip">The International Monetary Fund (IMF) plans to discuss the implementation timeline for Ethiopia’s new macroeconomic forecasting model with government authorities, as questions rema...</p>
+        <div class="story-meta"><span class="source">The Reporter Ethiopia</span> · 19d ago</div>
+      </div>
+    </article></div><div class="section-head" id="nigeria"><h2>News from Nigeria</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Nigeria" data-q="oyo trains healthcare workers to tackle childhood illnesses, prevent deaths punch health">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2025/10/06014147/Oyo-state-map.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Health</div>
+        <h3 class="story-title"><a href="https://punchng.com/oyo-trains-healthcare-workers-to-tackle-childhood-illnesses-prevent-deaths/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Oyo trains healthcare workers to tackle childhood illnesses, prevent deaths</a></h3>
+        <p class="story-snip">Oyo State Primary Health Care Board begins a nine-day training to equip health workers to manage childhood illnesses and cut preventable child deaths. Read More: https://punchng.co...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="why i chose south africa posting over europe — fani-kayode punch general">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/14004256/1003613836_1794613376-1200x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · General</div>
+        <h3 class="story-title"><a href="https://punchng.com/why-i-chose-south-africa-posting-over-europe-fani-kayode/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Why I chose South Africa posting over Europe — Fani-Kayode</a></h3>
+        <p class="story-snip">Nigeria’s ambassador Femi Fani-Kayode says he appealed to Tinubu for a South Africa posting over Europe, amid tension over the treatment of Nigerians. Read More: https://punchng.co...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="kalu, nhia boss seek investment to curb medical tourism punch health">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/04134217/Kalu_1793796137-1045x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Health</div>
+        <h3 class="story-title"><a href="https://punchng.com/kalu-nhia-boss-seek-investment-to-curb-medical-tourism/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Kalu, NHIA boss seek investment to curb medical tourism</a></h3>
+        <p class="story-snip">Deputy Speaker Benjamin Kalu and NHIA DG Kelechi Ohiri urge health sector investment to curb medical tourism at an Abuja robotic surgery launch. Read More: https://punchng.com/kalu...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="police locate family of nigerian-canadian killed in lagos crash punch politics">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19005346/Abraham_1795046026.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Politics</div>
+        <h3 class="story-title"><a href="https://punchng.com/police-locate-family-of-nigerian-canadian-killed-in-lagos-crash/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Police locate family of Nigerian-Canadian killed in Lagos crash</a></h3>
+        <p class="story-snip">Airport Police Command says it has contacted the family of Abraham Safety Osakpolor, a Nigerian-Canadian hit by a vehicle on the Lagos airport access road. Read More: https://punch...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="i wrote utme eight times before gaining admission – kwara education commissioner punch general">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19113527/images_1795084527.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · General</div>
+        <h3 class="story-title"><a href="https://punchng.com/i-wrote-utme-eight-times-before-gaining-admission-kwara-education-commissioner/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">I wrote UTME eight times before gaining admission – Kwara education commissioner</a></h3>
+        <p class="story-snip">Kwara education commissioner Dr Lawal Olohungbebe says he sat UTME eight times before gaining admission, and urges students to rely only on JAMB CAPS. Read More: https://punchng.co...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="lumumba faults african leaders seeking medical treatment abroad punch health">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19112214/WhatsApp-Image-2026-11-19-at-10.54.29_1795083734-720x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Health</div>
+        <h3 class="story-title"><a href="https://punchng.com/lumumba-faults-african-leaders-seeking-medical-treatment-abroad/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Lumumba faults African leaders seeking medical treatment abroad</a></h3>
+        <p class="story-snip">Prof Patrick Lumumba urges African leaders to stop seeking medical treatment abroad and build local capacity, speaking at a Pan-African conference in Uyo. Read More: https://punchn...</p>
+        <div class="story-meta"><span class="source">Punch</span> · just now</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="bayelsa cp seeks joint action against gender-based violence punch politics">
+      <div class="story-img"><img src="https://cdn.punchng.com/wp-content/uploads/2026/11/19110732/unnamed_1795082852-720x630.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Politics</div>
+        <h3 class="story-title"><a href="https://punchng.com/bayelsa-cp-seeks-joint-action-against-gender-based-violence/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Bayelsa CP seeks joint action against gender-based violence</a></h3>
+        <p class="story-snip">Bayelsa Police Commissioner Ajao Adewale urges agencies, traditional rulers and civil society to join forces against gender-based violence at a Yenagoa wor Read More: https://punch...</p>
+        <div class="story-meta"><span class="source">Punch</span> · 2m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="police arrest seven over alleged kidnapping plot in kwara premium times business">
+      <div class="story-img"><img src="https://i0.wp.com/media.premiumtimesng.com/wp-content/files/2026/11/694760.jpg?fit=1024%2C728&amp;amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Business</div>
+        <h3 class="story-title"><a href="https://www.premiumtimesng.com/news/more-news/926374-police-arrest-seven-over-alleged-kidnapping-plot-in-kwara.html" target="_blank">Police arrest seven over alleged kidnapping plot in Kwara</a></h3>
+        <p class="story-snip">Police say the seven suspects were arrested in Bode Saadu while planning to abduct a businessman. The post Police arrest seven over alleged kidnapping plot in Kwara appeared first ...</p>
+        <div class="story-meta"><span class="source">Premium Times</span> · 7m ago</div>
+      </div>
+    </article></div><div class="section-head" id="ghana"><h2>News from Ghana</h2><span class="count">8 stories</span></div><div class="story-list">
+    <article class="story" data-country="Ghana" data-q="ghana revenue authority intensifies vat compliance checks ghana business news business">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Social-GRA-Tax-e1795086391498.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Business</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank">Ghana Revenue Authority intensifies VAT compliance checks</a></h3>
+        <p class="story-snip">The Ghana Revenue Authority (GRA) has intensified its Value Added Tax (VAT) compliance checks on businesses and urged consumers to demand invoices for purchases to improve revenue ...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 3m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="ghana urges developed nations to honour climate finance commitments ghana business news energy &amp; climate">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Zanetor2.webp" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Energy &amp; Climate</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-urges-developed-nations-to-honour-climate-finance-commitments/" target="_blank">Ghana urges developed nations to honour climate finance commitments</a></h3>
+        <p class="story-snip">Ghana has urged developed countries to honour their climate finance commitments, warning that continued delays could undermine Africa’s confidence in international climate negotiat...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 3h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="ghana to gather evidence on commercial influences on public health ghana business news health">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2015/08/Screen-Shot-2015-08-11-at-1.10.56-PM.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Health</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-to-gather-evidence-on-commercial-influences-on-public-health/" target="_blank">Ghana to gather evidence on commercial influences on public health</a></h3>
+        <p class="story-snip">Ghana is to undertake a nationwide evidence-gathering exercise to examine how commercial activities influence public health, health policies and equity, particularly in relation to...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 3h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="rare dolphin washes ashore at kedzikope after decades ghana business news business">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Social-Fisherfolk-Kedzikope-1.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Business</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/rare-dolphin-washes-ashore-at-kedzikope-after-decades/" target="_blank">Rare dolphin washes ashore at Kedzikope after decades</a></h3>
+        <p class="story-snip">Residents of Kedzikope, a coastal community in the Keta Municipality of the Volta Region, have expressed surprise following the washing ashore of a dolphin, an occurrence believed ...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 4h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="ghana government urged to appoint technical experts to drive effective policy implementation ghana business news technology">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2024/01/Politics-Independent-Candidate.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Technology</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-government-urged-to-appoint-technical-experts-to-drive-effective-policy-implementation/" target="_blank">Ghana government urged to appoint technical experts to drive effective policy implementation</a></h3>
+        <p class="story-snip">Reverend Dr Worlanyo Mensah, an Economist, has urged the government to prioritise technical expertise and professional competence in appointments to public institutions, to ensure ...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 4h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="nalag pushes for direct election of mmdces ghana business news politics">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Politics-NALAG-Conference.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Politics</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/nalag-pushes-for-direct-election-of-mmdces/" target="_blank">NALAG pushes for direct election of MMDCEs</a></h3>
+        <p class="story-snip">The National Association of Local Authorities of Ghana (NALAG) has proposed reforms in local governance, including direct election of Metropolitan, Municipal and District Chief Exe...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 4h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="mahama condemns vigilantism against migrants ghana business news politics">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2025/08/Economics-Investment-Forum-2-e1755758432194.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Politics</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/mahama-condemns-vigilantism-against-migrants/" target="_blank">Mahama condemns vigilantism against migrants</a></h3>
+        <p class="story-snip">President John Dramani Mahama has condemned the brutalization of suspected illegal immigrants by vigilante groups, insisting that migration challenges must be addressed through law...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 4h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Ghana" data-q="ghana’s cannabis industry featured at international hemp expo in japan ghana business news health">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Economics-Ghana-Cannabis.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Health</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghanas-cannabis-industry-featured-at-international-hemp-expo-in-japan/" target="_blank">Ghana’s cannabis industry featured at international hemp expo in Japan</a></h3>
+        <p class="story-snip">Ghana’s emerging industrial hemp and regulated medical cannabis sectors featured in international discussions at the Japan International Hemp Expo (JIHE) 2026 in Tokyo. The post Gh...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 4h ago</div>
+      </div>
+    </article></div><div class="section-head" id="technology"><h2>Technology and Startups</h2><span class="count">6 stories</span></div><div class="story-list">
+    <article class="story" data-country="Pan-African" data-q="from bigger battery to four cameras: what’s new with oppo reno 17 techcabal technology">
+      <div class="story-img"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20800%20500'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'1'%3E%3Cstop%20offset%3D'0'%20stop-color%3D'hsl(215%2C45%25%2C28%25)'%2F%3E%3Cstop%20offset%3D'1'%20stop-color%3D'hsl(215%2C55%25%2C15%25)'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'800'%20height%3D'500'%20fill%3D'url(%23g)'%2F%3E%3Cpath%20d%3D'M60%20300h160l80-200%20130%20380%2090-280%2050%20100h170'%20fill%3D'none'%20stroke%3D'white'%20stroke-opacity%3D'.18'%20stroke-width%3D'14'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3Ctext%20x%3D'60'%20y%3D'440'%20font-family%3D'Georgia%2Cserif'%20font-size%3D'56'%20font-weight%3D'700'%20fill%3D'white'%20fill-opacity%3D'.9'%3ETechCabal%3C%2Ftext%3E%3C%2Fsvg%3E" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Technology</div>
+        <h3 class="story-title"><a href="https://techcabal.com/2026/11/19/oppo-reno-17-price-release-date-specs/" target="_blank">From bigger battery to four cameras: What’s new with Oppo Reno 17</a></h3>
+        <p class="story-snip">Oppo launched the Reno 17 in China on November 16, 2026, alongside the Reno 17 Pro. It packs an 8,000mAh battery, the biggest Oppo has ever put in a Reno phone, and four 50MP camer...</p>
+        <div class="story-meta"><span class="source">TechCabal</span> · 22m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Pan-African" data-q="who is actually using ai in africa? it depends on whom you count techcabal technology">
+      <div class="story-img"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20800%20500'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'1'%3E%3Cstop%20offset%3D'0'%20stop-color%3D'hsl(215%2C45%25%2C28%25)'%2F%3E%3Cstop%20offset%3D'1'%20stop-color%3D'hsl(215%2C55%25%2C15%25)'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'800'%20height%3D'500'%20fill%3D'url(%23g)'%2F%3E%3Cpath%20d%3D'M60%20300h160l80-200%20130%20380%2090-280%2050%20100h170'%20fill%3D'none'%20stroke%3D'white'%20stroke-opacity%3D'.18'%20stroke-width%3D'14'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3Ctext%20x%3D'60'%20y%3D'440'%20font-family%3D'Georgia%2Cserif'%20font-size%3D'56'%20font-weight%3D'700'%20fill%3D'white'%20fill-opacity%3D'.9'%3ETechCabal%3C%2Ftext%3E%3C%2Fsvg%3E" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Technology</div>
+        <h3 class="story-title"><a href="https://techcabal.com/2026/11/19/who-is-using-ai-in-africa/" target="_blank">Who is actually using AI in Africa? It depends on whom you count</a></h3>
+        <p class="story-snip">By one count, Kenya leads the world in AI use. In DataReportal’s July 2025 survey, 42.1% of Kenyan internet users aged 16 and over said they had used ChatGPT in the past month, the...</p>
+        <div class="story-meta"><span class="source">TechCabal</span> · 31m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="milestone global bank receives final approval from cbn, set to advance ethical and digital banking in nigeria premium times technology">
+      <div class="story-img"><img src="https://i0.wp.com/media.premiumtimesng.com/wp-content/files/2026/11/IMG_2824-e1795083711276.jpg?fit=2048%2C1310&amp;amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Technology</div>
+        <h3 class="story-title"><a href="https://www.premiumtimesng.com/promoted/926368-milestone-global-bank-receives-final-approval-from-cbn-set-to-advance-ethical-and-digital-banking-in-nigeria.html" target="_blank">Milestone Global Bank receives final approval from CBN, set to advance ethical and digital banking in Nigeria</a></h3>
+        <p class="story-snip">The new non-interest bank clears CBN's capital, governance and compliance requirements as it prepares to broaden ethical, and digital-first non-interest banking in Nigeria The post...</p>
+        <div class="story-meta"><span class="source">Premium Times</span> · 47m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="acca convention challenges accountants to adapt as ai reshapes profession nile post technology">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-12.55.31-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Technology</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388845/acca-convention-challenges-accountants-to-adapt-as-ai-reshapes-profession" target="_blank">ACCA Convention Challenges Accountants to Adapt as AI Reshapes Profession</a></h3>
+        <p class="story-snip">Accountants have been urged to embrace artificial intelligence and automation while strengthening professional judgement, ethical standards and strategic leadership to remain relev...</p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 55m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Pan-African" data-q="the bottleneck just moved: why african startups should care about mcp disrupt africa technology">
+      <div class="story-img"><img src="https://i0.wp.com/disruptafrica.com/wp-content/uploads/2026/10/mcp-session-1150-1.webp?fit=1150%2C700&amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Technology</div>
+        <h3 class="story-title"><a href="https://disruptafrica.com/2026/11/19/the-bottleneck-just-moved-why-african-startups-should-care-about-mcp/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=the-bottleneck-just-moved-why-african-startups-should-care-about-mcp" target="_blank">The bottleneck just moved: why African startups should care about MCP</a></h3>
+        <p class="story-snip">Earlier this year, our four-person studio cleared a 126-item product backlog in a single 48-hour stretch. A few weeks later, an AI edited a 268,000-word manuscript overnight — coor...</p>
+        <div class="story-meta"><span class="source">Disrupt Africa</span> · 2h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Pan-African" data-q="ethiopia’s dashen bank in equity talks with foreign investors ahead of listing the africa report technology">
+      <div class="story-img"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20800%20500'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'1'%3E%3Cstop%20offset%3D'0'%20stop-color%3D'hsl(215%2C45%25%2C28%25)'%2F%3E%3Cstop%20offset%3D'1'%20stop-color%3D'hsl(215%2C55%25%2C15%25)'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'800'%20height%3D'500'%20fill%3D'url(%23g)'%2F%3E%3Cpath%20d%3D'M60%20300h160l80-200%20130%20380%2090-280%2050%20100h170'%20fill%3D'none'%20stroke%3D'white'%20stroke-opacity%3D'.18'%20stroke-width%3D'14'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3Ctext%20x%3D'60'%20y%3D'440'%20font-family%3D'Georgia%2Cserif'%20font-size%3D'56'%20font-weight%3D'700'%20fill%3D'white'%20fill-opacity%3D'.9'%3EThe%20Africa%20Report%3C%2Ftext%3E%3C%2Fsvg%3E" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Technology</div>
+        <h3 class="story-title"><a href="https://www.theafricareport.com/436898/ethiopias-dashen-bank-in-equity-talks-with-foreign-investors-ahead-of-listing/" target="_blank">Ethiopia’s Dashen Bank in equity talks with foreign investors ahead of listing</a></h3>
+        <p class="story-snip">Ethiopia’s Dashen Bank is negotiating equity stakes with regional strategic investors to secure technology and expertise ahead of its planned stock market listing....</p>
+        <div class="story-meta"><span class="source">The Africa Report</span> · 2h ago</div>
+      </div>
+    </article></div><div class="section-head" id="business"><h2>Business and Economy</h2><span class="count">6 stories</span></div><div class="story-list">
+    <article class="story" data-country="Ghana" data-q="ghana revenue authority intensifies vat compliance checks ghana business news business">
+      <div class="story-img"><img src="https://www.ghanabusinessnews.com/wp-content/uploads/2026/11/Social-GRA-Tax-e1795086391498.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Ghana · Business</div>
+        <h3 class="story-title"><a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank">Ghana Revenue Authority intensifies VAT compliance checks</a></h3>
+        <p class="story-snip">The Ghana Revenue Authority (GRA) has intensified its Value Added Tax (VAT) compliance checks on businesses and urged consumers to demand invoices for purchases to improve revenue ...</p>
+        <div class="story-meta"><span class="source">Ghana Business News</span> · 3m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="police arrest seven over alleged kidnapping plot in kwara premium times business">
+      <div class="story-img"><img src="https://i0.wp.com/media.premiumtimesng.com/wp-content/files/2026/11/694760.jpg?fit=1024%2C728&amp;amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Business</div>
+        <h3 class="story-title"><a href="https://www.premiumtimesng.com/news/more-news/926374-police-arrest-seven-over-alleged-kidnapping-plot-in-kwara.html" target="_blank">Police arrest seven over alleged kidnapping plot in Kwara</a></h3>
+        <p class="story-snip">Police say the seven suspects were arrested in Bode Saadu while planning to abduct a businessman. The post Police arrest seven over alleged kidnapping plot in Kwara appeared first ...</p>
+        <div class="story-meta"><span class="source">Premium Times</span> · 7m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Pan-African" data-q="takealot has built an e-commerce machine. can small businesses grow on it? techcabal business">
+      <div class="story-img"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20800%20500'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'1'%3E%3Cstop%20offset%3D'0'%20stop-color%3D'hsl(150%2C45%25%2C28%25)'%2F%3E%3Cstop%20offset%3D'1'%20stop-color%3D'hsl(150%2C55%25%2C15%25)'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'800'%20height%3D'500'%20fill%3D'url(%23g)'%2F%3E%3Cpath%20d%3D'M60%20300h160l80-200%20130%20380%2090-280%2050%20100h170'%20fill%3D'none'%20stroke%3D'white'%20stroke-opacity%3D'.18'%20stroke-width%3D'14'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3Ctext%20x%3D'60'%20y%3D'440'%20font-family%3D'Georgia%2Cserif'%20font-size%3D'56'%20font-weight%3D'700'%20fill%3D'white'%20fill-opacity%3D'.9'%3ETechCabal%3C%2Ftext%3E%3C%2Fsvg%3E" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Business</div>
+        <h3 class="story-title"><a href="https://techcabal.com/2026/11/19/takealot-ecommerce-network-sa-smes/" target="_blank">Takealot has built an e-commerce machine. Can small businesses grow on it?</a></h3>
+        <p class="story-snip">Takealot's marketplace and logistics network give more than 16,000 independent sellers access to millions of customers. But can South African SMEs turn that reach into sustainable ...</p>
+        <div class="story-meta"><span class="source">TechCabal</span> · 34m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Nigeria" data-q="unn to introduce routine drug tests after death of four students premium times business">
+      <div class="story-img"><img src="https://i0.wp.com/media.premiumtimesng.com/wp-content/files/2026/11/University-of-Nigeria-Nsukka.jpg?fit=738%2C387&amp;amp;ssl=1" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Nigeria · Business</div>
+        <h3 class="story-title"><a href="https://www.premiumtimesng.com/news/top-news/926371-unn-to-introduce-routine-drug-tests-after-death-of-four-students.html" target="_blank">UNN to introduce routine drug tests after death of four students</a></h3>
+        <p class="story-snip">PREMIUM TIMES earlier reported that the four students were found dead in the lodge on Wednesday, last week. The post UNN to introduce routine drug tests after death of four student...</p>
+        <div class="story-meta"><span class="source">Premium Times</span> · 40m ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Uganda" data-q="pm gives ura three days to reopen traders’ shops after meeting kacita nile post business">
+      <div class="story-img"><img src="https://nilepost.co.ug/new_cms/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-19-at-12.51.15-PM.jpeg" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Uganda · Business</div>
+        <h3 class="story-title"><a href="https://nilepost.co.ug/news/388842/pm-gives-ura-three-days-to-reopen-traders-shops-after-meeting-kacita" target="_blank">PM Gives URA Three Days to Reopen Traders’ Shops After Meeting KACITA</a></h3>
+        <p class="story-snip"></p>
+        <div class="story-meta"><span class="source">Nile Post</span> · 1h ago</div>
+      </div>
+    </article>
+    <article class="story" data-country="Pan-African" data-q="wapipay wants kenyan importers to skip the dollar when paying china techcabal business">
+      <div class="story-img"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20800%20500'%3E%3Cdefs%3E%3ClinearGradient%20id%3D'g'%20x1%3D'0'%20y1%3D'0'%20x2%3D'1'%20y2%3D'1'%3E%3Cstop%20offset%3D'0'%20stop-color%3D'hsl(150%2C45%25%2C28%25)'%2F%3E%3Cstop%20offset%3D'1'%20stop-color%3D'hsl(150%2C55%25%2C15%25)'%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D'800'%20height%3D'500'%20fill%3D'url(%23g)'%2F%3E%3Cpath%20d%3D'M60%20300h160l80-200%20130%20380%2090-280%2050%20100h170'%20fill%3D'none'%20stroke%3D'white'%20stroke-opacity%3D'.18'%20stroke-width%3D'14'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'%2F%3E%3Ctext%20x%3D'60'%20y%3D'440'%20font-family%3D'Georgia%2Cserif'%20font-size%3D'56'%20font-weight%3D'700'%20fill%3D'white'%20fill-opacity%3D'.9'%3ETechCabal%3C%2Ftext%3E%3C%2Fsvg%3E" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()" /></div>
+      <div class="story-body">
+        <div class="story-cat">Pan-African · Business</div>
+        <h3 class="story-title"><a href="https://techcabal.com/2026/11/19/wapipay-to-pay-merchants-in-china-in-yuan/" target="_blank">WapiPay wants Kenyan importers to skip the dollar when paying China</a></h3>
+        <p class="story-snip">The service starts in Kenya, with the two companies looking to serve businesses that buy from suppliers elsewhere in Asia....</p>
+        <div class="story-meta"><span class="source">TechCabal</span> · 1h ago</div>
+      </div>
+    </article></div>
+      <p id="empty" hidden>No stories match. Try another country or keyword.</p>
+    </main>
+
+    <aside class="sidebar">
+      <div class="widget widget-follow">
+        <h3 class="widget-title">Follow Nuru Wire</h3>
+        <div class="social"><a href="https://x.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://facebook.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://instagram.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://linkedin.com/company/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://youtube.com/@nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="M9.75 15.02 15.5 11.75 9.75 8.48z"/></svg></a><a href="https://whatsapp.com/channel/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a></div>
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">💱 USD Exchange Rates</h3>
+        <p style="font-size:0.7rem; color:var(--muted); margin-bottom:10px;">1 USD equals</p>
+        
+    <div class="rate-row">
+      <span class="rate-label">KES</span>
+      <span class="rate-country">Kenya</span>
+      <span class="rate-value">129.56</span>
+    </div>
+    <div class="rate-row">
+      <span class="rate-label">NGN</span>
+      <span class="rate-country">Nigeria</span>
+      <span class="rate-value">1328.12</span>
+    </div>
+    <div class="rate-row">
+      <span class="rate-label">GHS</span>
+      <span class="rate-country">Ghana</span>
+      <span class="rate-value">11.62</span>
+    </div>
+    <div class="rate-row hl">
+      <span class="rate-label">UGX</span>
+      <span class="rate-country">Uganda</span>
+      <span class="rate-value">3920.31</span>
+    </div>
+    <div class="rate-row">
+      <span class="rate-label">ZAR</span>
+      <span class="rate-country">South Africa</span>
+      <span class="rate-value">16.53</span>
+    </div>
+    <div class="rate-row">
+      <span class="rate-label">ETB</span>
+      <span class="rate-country">Ethiopia</span>
+      <span class="rate-value">161.31</span>
+    </div>
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">Top Business Stories</h3>
+        
+    <div class="biz-item">
+      <a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank" class="biz-title">Ghana Revenue Authority intensifies VAT compliance checks</a>
+      <div class="biz-meta">Ghana Business News · 3m ago</div>
+    </div>
+    <div class="biz-item">
+      <a href="https://www.premiumtimesng.com/news/more-news/926374-police-arrest-seven-over-alleged-kidnapping-plot-in-kwara.html" target="_blank" class="biz-title">Police arrest seven over alleged kidnapping plot in Kwara</a>
+      <div class="biz-meta">Premium Times · 7m ago</div>
+    </div>
+    <div class="biz-item">
+      <a href="https://www.premiumtimesng.com/news/top-news/926371-unn-to-introduce-routine-drug-tests-after-death-of-four-students.html" target="_blank" class="biz-title">UNN to introduce routine drug tests after death of four students</a>
+      <div class="biz-meta">Premium Times · 40m ago</div>
+    </div>
+    <div class="biz-item">
+      <a href="https://www.premiumtimesng.com/promoted/926368-milestone-global-bank-receives-final-approval-from-cbn-set-to-advance-ethical-and-digital-banking-in-nigeria.html" target="_blank" class="biz-title">Milestone Global Bank receives final approval from CBN, set to advance ethical and digital banking in Nigeria</a>
+      <div class="biz-meta">Premium Times · 47m ago</div>
+    </div>
+      </div>
+
+      <div class="widget most-read">
+        <h3 class="widget-title">Most Read</h3>
+        <ul class="widget-list">
+          <li><a href="https://punchng.com/oyo-trains-healthcare-workers-to-tackle-childhood-illnesses-prevent-deaths/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Oyo trains healthcare workers to tackle childhood illnesses, prevent deaths</a></li><li><a href="https://punchng.com/why-i-chose-south-africa-posting-over-europe-fani-kayode/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Why I chose South Africa posting over Europe — Fani-Kayode</a></li><li><a href="https://punchng.com/kalu-nhia-boss-seek-investment-to-curb-medical-tourism/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Kalu, NHIA boss seek investment to curb medical tourism</a></li><li><a href="https://punchng.com/police-locate-family-of-nigerian-canadian-killed-in-lagos-crash/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Police locate family of Nigerian-Canadian killed in Lagos crash</a></li><li><a href="https://punchng.com/i-wrote-utme-eight-times-before-gaining-admission-kwara-education-commissioner/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">I wrote UTME eight times before gaining admission – Kwara education commissioner</a></li>
+        </ul>
+      </div>
+
+      <div class="widget trending">
+        <h3 class="widget-title">Trending Now</h3>
+        <ul class="widget-list">
+          
+    <li>
+      <span class="trend-num">1</span>
+      <a href="https://punchng.com/lumumba-faults-african-leaders-seeking-medical-treatment-abroad/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Lumumba faults African leaders seeking medical treatment abroad</a>
+    </li>
+    <li>
+      <span class="trend-num">2</span>
+      <a href="https://punchng.com/bayelsa-cp-seeks-joint-action-against-gender-based-violence/?utm_source=rss.punchng.com&amp;utm_medium=web" target="_blank">Bayelsa CP seeks joint action against gender-based violence</a>
+    </li>
+    <li>
+      <span class="trend-num">3</span>
+      <a href="https://www.ghanabusinessnews.com/2026/11/19/ghana-revenue-authority-intensifies-vat-compliance-checks/" target="_blank">Ghana Revenue Authority intensifies VAT compliance checks</a>
+    </li>
+    <li>
+      <span class="trend-num">4</span>
+      <a href="https://horseedmedia.net/dowladda-somalia-oo-cayrisay-safiirkii-imaaraadka-u-fadhiyey-muqdisho/427717/" target="_blank">Dowladda Somalia oo cayrisay safiirkii Imaaraadka u fadhiyey Muqdisho.</a>
+    </li>
+    <li>
+      <span class="trend-num">5</span>
+      <a href="https://www.premiumtimesng.com/news/more-news/926374-police-arrest-seven-over-alleged-kidnapping-plot-in-kwara.html" target="_blank">Police arrest seven over alleged kidnapping plot in Kwara</a>
+    </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="name">Nuru Wire</div>
+        <p>Connecting you to the pulse of development, business, and innovation across Africa.</p>
+        <div class="social"><a href="https://x.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://facebook.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://instagram.com/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://linkedin.com/company/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://youtube.com/@nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="M9.75 15.02 15.5 11.75 9.75 8.48z"/></svg></a><a href="https://whatsapp.com/channel/nuruwire" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Regions</h4>
+        <a href="#somalia">Somalia</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#kenya">Kenya</a>
+        <a href="#nigeria">Nigeria</a>
+        <a href="#ghana">Ghana</a>
+        <a href="#uganda">Uganda</a>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <a href="#talk-of-town">Talk of Town</a>
+        <a href="#business">Business</a>
+        <a href="#technology">Technology</a>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="#">Our Mission</a>
+        <a href="#">Sources</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nuru Wire. All rights reserved.</span>
+      <span>Share prices are delayed and for information only. Last updated: Thursday, 19 November 2026 at 14:11 GMT</span>
+    </div>
+  </footer>
+
+<script>
+    const q = document.getElementById('q'), chips = [...document.querySelectorAll('.chip')]; let c = 'All';
+    function run() {
+      const s = q.value.trim().toLowerCase();
+      document.querySelectorAll('.story, .card').forEach(e => { e.hidden = !((c === 'All' || e.dataset.country === c) && (!s || e.dataset.q.includes(s))); });
+      document.querySelectorAll('.story-list, .card-grid').forEach(l => { const any = !!l.querySelector(':scope > :not([hidden])'); l.hidden = !any; l.previousElementSibling.hidden = !any; });
+      document.getElementById('empty').hidden = !!document.querySelector('.story:not([hidden]), .card:not([hidden])');
+    }
+    q.addEventListener('input', run);
+    setInterval(() => { if (!q.value && !document.hidden) location.reload(); }, 600000); // pick up the 10-minute rebuild
+    chips.forEach(b => b.addEventListener('click', () => { c = b.textContent; chips.forEach(x => x.setAttribute('aria-pressed', x === b)); run(); }));
+  </script>
+</body>
+</html>
