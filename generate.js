@@ -90,20 +90,26 @@ const AFRICAN_CURRENCIES = [
   { code: 'etb', label: 'ETB', country: 'Ethiopia' }
 ];
 
-let FX = {};
+let FX = {}; // units of each currency per 1 USD (lowercase codes); also used to convert share prices
+
+// Live market quote for USD/XXX (the same interbank rates Google shows, via Yahoo Finance)
+async function marketRate(code) {
+  const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/USD${code.toUpperCase()}=X?range=1d&interval=1d`,
+    { signal: AbortSignal.timeout(8000), headers: { 'User-Agent': 'Mozilla/5.0' } });
+  return (await r.json()).chart.result[0].meta.regularMarketPrice;
+}
+
 async function fetchExchangeRates() {
-  try {
-    const res = await fetch('https://cdn.jsdelivr.net/gh/NemesisX1/currency-api@main/v1/currencies/usd.json');
-    const data = await res.json();
-    FX = data.usd || {};
-    return AFRICAN_CURRENCIES.map(c => ({
-      label: c.label,
-      country: c.country,
-      rate: data.usd[c.code] || 'N/A'
-    }));
-  } catch (err) {
-    return [];
-  }
+  let backupP = null; // daily backup rates, only fetched if a live quote fails
+  const backup = () => (backupP ||= fetch('https://open.er-api.com/v6/latest/USD', { signal: AbortSignal.timeout(8000) }).then(r => r.json()));
+  FX = {};
+  await Promise.all([...AFRICAN_CURRENCIES.map(c => c.code), 'gbp'].map(async code => {
+    let v = 0;
+    try { v = await marketRate(code); } catch {}
+    if (!(v > 0)) { try { v = (await backup()).rates[code.toUpperCase()]; } catch {} }
+    if (v > 0) FX[code] = v;
+  }));
+  return AFRICAN_CURRENCIES.filter(c => FX[c.code]).map(c => ({ label: c.label, country: c.country, rate: FX[c.code] }));
 }
 
 // ============================================================
@@ -252,6 +258,13 @@ function buildHTML(articles, rates, stocks = []) {
   const ethiopiaAll = articles.filter(a => a.country === 'Ethiopia').slice(0, 8);
   const techAll = articles.filter(a => a.topic === 'Technology').slice(0, 6);
   const bizAll = articles.filter(a => a.topic === 'Business').slice(0, 6);
+  const shareHTML = a => {
+    const u = encodeURIComponent(a.link), t = encodeURIComponent(a.title), label = escapeHtml(a.title);
+    return `<div class="share"><span>Share</span>
+          <a href="https://x.com/intent/post?text=${t}&url=${u}" target="_blank" rel="noopener noreferrer" aria-label="Share on X: ${label}" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.X}</svg></a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${u}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook: ${label}" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.Facebook}</svg></a>
+        </div>`;
+  };
   const stockItem = x => `<span class="stk" title="${escapeHtml(x.name)} (${escapeHtml(x.symbol)}), converted from ${escapeHtml(x.cur)}"><b>${escapeHtml(x.name)}</b> $${x.usd < 1 ? x.usd.toFixed(3) : x.usd.toFixed(2)} <i class="${x.pct >= 0 ? 'up' : 'down'}">${x.pct >= 0 ? '▲' : '▼'} ${Math.abs(x.pct).toFixed(2)}%</i></span>`;
   const stocksHTML = stocks.length ? `<div class="ticker stocks" aria-label="African company share prices in US dollars"><span class="ticker-label">Markets · USD</span><div class="ticker-track-container"><div class="ticker-track">${stocks.map(stockItem).join('') + stocks.map(stockItem).join('')}</div></div></div>` : '';
   const socialHTML = SOCIALS.map(x => `<a href="${x.u}" target="_blank" rel="noopener noreferrer" aria-label="Nuru Wire on ${x.n}" title="${x.n}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[x.n]}</svg></a>`).join('');
@@ -270,6 +283,7 @@ function buildHTML(articles, rates, stocks = []) {
         <h3 class="story-title"><a href="${escapeHtml(a.link)}" target="_blank">${escapeHtml(a.title)}</a></h3>
         <p class="story-snip">${escapeHtml(a.snippet)}</p>
         <div class="story-meta"><span class="source">${escapeHtml(a.source)}</span> · ${timeAgo(a.pubDate)}</div>
+        ${shareHTML(a)}
       </div>
     </article>`;
 
@@ -279,6 +293,7 @@ function buildHTML(articles, rates, stocks = []) {
       <div class="card-cat">${escapeHtml(a.country)} · ${escapeHtml(a.category)}</div>
       <h3 class="card-title"><a href="${escapeHtml(a.link)}" target="_blank">${escapeHtml(a.title)}</a></h3>
       <div class="card-meta"><span class="source">${escapeHtml(a.source)}</span> · ${timeAgo(a.pubDate)}</div>
+      ${shareHTML(a)}
     </article>`;
 
   const leadHTML = lead ? `
@@ -289,6 +304,7 @@ function buildHTML(articles, rates, stocks = []) {
         <h1 class="lead-title"><a href="${escapeHtml(lead.link)}" target="_blank">${escapeHtml(lead.title)}</a></h1>
         <p class="lead-dek">${escapeHtml(lead.snippet)}</p>
         <div class="byline"><span class="source">${escapeHtml(lead.source)}</span> <span class="sep">•</span> <span>${timeAgo(lead.pubDate)}</span></div>
+        ${shareHTML(lead)}
       </div>
     </article>` : '';
 
@@ -298,7 +314,7 @@ function buildHTML(articles, rates, stocks = []) {
     <div class="rate-row${r.label === 'UGX' ? ' hl' : ''}">
       <span class="rate-label">${escapeHtml(r.label)}</span>
       <span class="rate-country">${escapeHtml(r.country)}</span>
-      <span class="rate-value">${typeof r.rate === 'number' ? r.rate.toFixed(2) : escapeHtml(r.rate)}</span>
+      <span class="rate-value">${r.rate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
     </div>`).join('') : '<p>Rates unavailable.</p>';
 
   const trendingHTML = trending.map((a, i) => `
@@ -453,6 +469,12 @@ function buildHTML(articles, rates, stocks = []) {
     .stk i { font-style: normal; font-weight: 700; margin-left: 4px; }
     .stk .up { color: #4ade80; }
     .stk .down { color: #ff7b7b; }
+    .share { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 0.7rem; color: var(--muted); }
+    .share span { margin-right: 2px; }
+    .share a { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-soft); transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .share a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .share svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 700px) { .share a { width: 36px; height: 36px; } .share svg { width: 16px; height: 16px; } }
     [hidden] { display: none !important; }
     a:hover { color: var(--accent); }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -617,7 +639,7 @@ function buildHTML(articles, rates, stocks = []) {
 
       <div class="widget">
         <h3 class="widget-title">💱 USD Exchange Rates</h3>
-        <p style="font-size:0.7rem; color:var(--muted); margin-bottom:10px;">1 USD equals</p>
+        <p style="font-size:0.7rem; color:var(--muted); margin-bottom:10px;">1 USD equals · market rates at ${nowTime} GMT</p>
         ${ratesHTML}
       </div>
 
